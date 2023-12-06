@@ -15,6 +15,9 @@ public class Games
     // declare empty game object as standard, will be used as read/write variable
     public List<Game> game = [];
 
+    // admin variable which can be toggled
+    public bool admin = false;
+
     // setup the initiation of the game JSON file. 
 
     public void Setup()
@@ -62,6 +65,7 @@ public class Games
             {
                 // if true, set the dummy to true, break the loop
                 dummy = true;
+                admin = true;
             }
             else // user admin prompt wrong information 
             {
@@ -84,6 +88,23 @@ public class Games
 
         // return the dummy as the indicator if admin login was successful.
         return dummy;
+
+    }
+
+    // simple function that logs out the admin
+    public bool LogoutAdmin()
+    {
+        // check if admin is logged in
+        if (admin)
+        {
+            // logout the admin
+            admin = false;
+            // return true
+            return true;
+        } else {
+            // return false, can prompt error message on another method 
+            return false;
+        }
 
     }
 
