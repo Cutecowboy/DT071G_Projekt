@@ -9,5 +9,4 @@ games.Setup();
 games.LoginAdmin();
 WriteLine(games.admin);
 
-games.LogoutAdmin();
-WriteLine(games.admin);
+games.AddGame();

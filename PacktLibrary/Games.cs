@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using static System.Console;
@@ -10,7 +11,7 @@ public class Games
 
     // Game object will store following variables
     // int id, string name, string developer, int/datetime year, int price
-    public record Game(int Id, string Name, string Developer, DateTime Year, int Price);
+    public record Game(int Id, string Name, string Developer, int Year, int Price);
 
     // declare empty game object as standard, will be used as read/write variable
     public List<Game> game = [];
@@ -101,9 +102,209 @@ public class Games
             admin = false;
             // return true
             return true;
-        } else {
+        }
+        else
+        {
             // return false, can prompt error message on another method 
             return false;
+        }
+
+    }
+
+    public void AddGame()
+    {
+        // Ensure no brute-forcing, admin has to be logged in
+        if (admin)
+        {
+            // declare dummies for input values
+            bool NameChecker = false;
+            bool DevChecker = false;
+            bool PriceChecker = false;
+            bool YearChecker = false;
+
+            // declare empty values for the input params
+            string inpName = "";
+            string inpDev = "";
+            string inpPrice = "";
+            string inpYear = "";
+
+
+            // first loop
+            while (NameChecker == false)
+            {
+                // clear terminal
+                Clear();
+                // prompt user to enter game name
+                WriteLine("Enter the games name: ");
+                inpName = ReadLine()!;
+                // check whether input is empty
+                if (string.IsNullOrEmpty(inpName))
+                {
+                    // clear
+                    Clear();
+                    // prompt user to re-enter valid name
+                    WriteLine("Please enter a valid name, press any key to continue!");
+                    ReadKey();
+                }
+                // check if input is greater than 1 character long
+                else if (inpName.Length < 2)
+                {
+                    // clear
+                    Clear();
+                    // prompt user to re-enter valid name
+                    WriteLine("Please enter a name that includes atleast two characters, press any key to continue!");
+                    ReadKey();
+                }
+                else // success
+                {
+                    // set dummy to true, break loop
+                    NameChecker = true;
+                }
+            }
+
+
+            // second loop
+            while (DevChecker == false)
+            {
+                // clear
+                Clear();
+                // prompt user to add dev name
+                WriteLine("Enter the developers name: ");
+                inpDev = ReadLine()!;
+                // check if empty input
+                if (string.IsNullOrEmpty(inpDev))
+                {
+                    Clear();
+                    // prompt user to re-enter valid name
+                    WriteLine("Please enter a valid name, press any key to continue!");
+                    ReadKey();
+                }
+
+                // check that characters is greater than 1 character long
+                else if (inpDev.Length < 2)
+                {
+                    Clear();
+                    // prompt user to re-enter valid name
+                    WriteLine("Please enter a name that includes atleast two characters, press any key to continue!");
+                    ReadKey();
+                }
+                else // success
+                {
+                    // set dummy to true, break loop
+                    DevChecker = true;
+                }
+            }
+
+            // third loop 
+            while (YearChecker == false)
+            {
+                //clear
+                Clear();
+                // prompt user to enter a year
+                WriteLine("Enter the published game date in years (YYYY): ");
+                inpYear = ReadLine()!;
+                // try to parse input value to an int
+                if (Int32.TryParse(inpYear, out int year))
+                {
+                    // if able to parse, check that the inputted year is between 1970 and the current year (2023)
+                    if (year >= 1970 && year <= DateTime.Now.Year)
+                    {
+                        // set dummy to true, break loop
+                        YearChecker = true;
+                    }
+                    else // wrong date
+                    {
+                        Clear();
+                        // explain to user to enter a year between the condition above
+                        WriteLine($"Please enter a year between 1970 and {DateTime.Now.Year}, press any key to try again!");
+                        ReadKey();
+                    }
+
+                }
+                else // failed format
+                {
+                    Clear();
+                    // promt user to re-enter valid year format
+                    WriteLine("Please enter a valid year, format YYYY, press any key to continue!");
+                    ReadKey();
+                }
+            }
+
+            // fourth loop
+            while (PriceChecker == false)
+            {
+                Clear();
+                // prompt user to enter the games price
+                WriteLine("Enter the games price: ");
+                inpPrice = ReadLine()!;
+                // try to parse the input string to an int
+                if (Int32.TryParse(inpPrice, out int price))
+                {
+                    // if parsed, check that price is greater than 0
+                    if (price > 0)
+                    {
+                        // set dummy to true, break loop
+                        PriceChecker = true;
+                    }
+                    else // zero or negative
+                    {
+                        Clear();
+                        // prompt user to re-enter a valid price
+                        WriteLine("Please enter a price greater than 0, press any key to try again!");
+                        ReadKey();
+                    }
+
+                }
+                else // invalid input
+                {
+                    Clear();
+                    // prompt user to re-enter valid input
+                    WriteLine("Please enter a valid price, press any key to continue!");
+                    ReadKey();
+                }
+            }
+
+            // double-check whether all loops are correct before storing on JSON file. 
+            if (DevChecker && NameChecker && YearChecker && PriceChecker)
+            {
+                // append the new game to the game list
+                game.Add(new Game(Id: 0, Name: inpName, Developer: inpDev, Year: Int32.Parse(inpYear), Price: Int32.Parse(inpPrice)));
+
+                // save the new game
+                Save();
+                // clear terminal
+                Clear();
+                // prompt user that the game has been stored
+                WriteLine($"Name: {inpName}\nDeveloper: {inpDev}\nYear: {inpYear}\nPrice: {inpPrice}\nHas successfully been created, press any key to continue!");
+                ReadKey();
+
+            }
+
+
+        } else {
+            Clear();
+            // prompt user that they have to be logged in to access this functionality, guard for brute forcing. 
+            WriteLine("Must be logged in to add a new game to the file, please log in and try again, press any key to continue!");
+            ReadKey();
+        }
+    }
+    /// <summary>
+    /// Save the content on the entries to the JSON file
+    /// </summary>
+    public void Save()
+    {
+        // if no entries, reduce bugs by replacing empty array with empty string
+        if (game.Count == 0)
+        {
+            // empty string instead of []
+            File.WriteAllText("game.json", "");
+        }
+        else
+        {
+            // Serialize the entries
+            string json = JsonSerializer.Serialize(game);
+            // write the json data to the json file
+            File.WriteAllText("game.json", json);
         }
 
     }
