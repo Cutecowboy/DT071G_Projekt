@@ -11,3 +11,4 @@ WriteLine(games.admin); */
 games.admin = true;
 
 WriteLine(games.PrintGames());
+reviews.AddComment(0);

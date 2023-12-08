@@ -14,7 +14,7 @@ public class Games
     // int id, string name, string developer, int/datetime year, int price
     public record Game(int Id, string Name, string Developer, int Year, int Price);
 
-     // declare empty game object as standard, will be used as read/write variable
+    // declare empty game object as standard, will be used as read/write variable
     public List<Game> game = [];
 
     // admin variable which can be toggled
@@ -370,12 +370,15 @@ public class Games
     public int PostId()
     {
         // if there are not games 
-        if(game.Count == 0){
+        if (game.Count == 0)
+        {
             // return Id 0
             return 0;
-        } else {
+        }
+        else
+        {
             // return the max value of the Id + 1, this to ensure correct "database" Id value
-            return game.Max(t=> t.Id) + 1;
+            return game.Max(t => t.Id) + 1;
         }
     }
 
@@ -383,11 +386,14 @@ public class Games
     {
         // declare empty string
         string message = "";
-        if(game.Count == 0){
+        if (game.Count == 0)
+        {
             // inform that there are no games
             message = "There are no games in the store!";
 
-        } else {
+        }
+        else
+        {
             message = String.Format("{0,-5} {1,-30} {2,-30} {3, -10} {4, -10}\n\n", "ID", "Title", "Developer", "Published", "Price");
             for (int i = 0; i < game.Count; i++)
             {
