@@ -6,7 +6,8 @@ Games games = new();
 games.Setup();
 
 // serve as a control variable when the admin is logged in.
-games.LoginAdmin();
-WriteLine(games.admin);
+/* games.LoginAdmin();
+WriteLine(games.admin); */
+games.admin = true;
 
-games.AddGame();
+games.DeleteGame(5);

@@ -13,7 +13,7 @@ public class Games
     // int id, string name, string developer, int/datetime year, int price
     public record Game(int Id, string Name, string Developer, int Year, int Price);
 
-    // declare empty game object as standard, will be used as read/write variable
+     // declare empty game object as standard, will be used as read/write variable
     public List<Game> game = [];
 
     // admin variable which can be toggled
@@ -268,7 +268,7 @@ public class Games
             if (DevChecker && NameChecker && YearChecker && PriceChecker)
             {
                 // append the new game to the game list
-                game.Add(new Game(Id: 0, Name: inpName, Developer: inpDev, Year: Int32.Parse(inpYear), Price: Int32.Parse(inpPrice)));
+                game.Add(new Game(Id: PostId(), Name: inpName, Developer: inpDev, Year: Int32.Parse(inpYear), Price: Int32.Parse(inpPrice)));
 
                 // save the new game
                 Save();
@@ -281,7 +281,9 @@ public class Games
             }
 
 
-        } else {
+        }
+        else
+        {
             Clear();
             // prompt user that they have to be logged in to access this functionality, guard for brute forcing. 
             WriteLine("Must be logged in to add a new game to the file, please log in and try again, press any key to continue!");
@@ -309,5 +311,71 @@ public class Games
 
     }
 
+    // delete a game with id as param
+    public void DeleteGame(int id)
+    {
+        // check that you're logged in as admin
+        if (admin)
+        {
+            // if the inputted id is >= 0 and the id <= game count 
+            if (id >= 0 && id <= game.Count)
+            {
+                // try to 
+                try
+                {
+                    // remove the game at said index
+                    game.RemoveAt(id);
+                    // save
+                    Save();
+                    // clear
+                    Clear();
+                    // write success message
+                    WriteLine($"Post id: {id} is now removed, press any key to continue!");
+                    ReadKey();
+                }
+                // catch exceptionerror in case something goes wrong
+                catch (ArgumentException)
+                {
+                    // clear
+                    Clear();
+                    // write error message
+                    WriteLine($"Post id: {id} was not found, press any key to continue!");
+                    ReadKey();
+                }
+            }
+            // if you write an id below zero or above the count
+            else
+            {
+                Clear();
+                // error message
+                WriteLine($"Post id: {id} was not found, press any key to continue!");
+                ReadKey();
+            }
+        }
+        // if you're not logged in as admin
+        else
+        {
+            Clear();
+            // prompt user that they have to be logged in to access this functionality, guard for brute forcing. 
+            WriteLine("Must be logged in to add a new game to the file, please log in and try again, press any key to continue!");
+            ReadKey();
+        }
+
+
+
+    }
+
+    // check index and return a index
+    public int PostId()
+    {
+        // if there are not games 
+        if(game.Count == 0){
+            // return Id 0
+            return 0;
+        } else {
+            // return the max value of the Id + 1, this to ensure correct "database" Id value
+            return game.Max(t=> t.Id) + 1;
+        }
+    }
 
 }
