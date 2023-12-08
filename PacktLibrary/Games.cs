@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.IO.Enumeration;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -377,5 +378,25 @@ public class Games
             return game.Max(t=> t.Id) + 1;
         }
     }
+
+    public string PrintGames()
+    {
+        // declare empty string
+        string message = "";
+        if(game.Count == 0){
+            // inform that there are no games
+            message = "There are no games in the store!";
+
+        } else {
+            message = String.Format("{0,-5} {1,-30} {2,-30} {3, -10} {4, -10}\n\n", "ID", "Title", "Developer", "Published", "Price");
+            for (int i = 0; i < game.Count; i++)
+            {
+                // add information to the string
+                message += String.Format("{0,-5} {1,-30} {2,-30} {3, -10} {4, -10}\n", i, game[i].Name, game[i].Developer, game[i].Year, game[i].Price);
+            }
+        }
+        return message;
+    }
+
 
 }
