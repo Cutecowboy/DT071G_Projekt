@@ -61,7 +61,8 @@
           }
         },
         "build": {
-          "build/netstandard2.0/_._": {}
+          "build/netstandard2.0/Microsoft.ML.props": {},
+          "build/netstandard2.0/Microsoft.ML.targets": {}
         },
         "runtimeTargets": {
           "runtimes/linux-arm/native/libLdaNative.so": {
@@ -1159,6 +1160,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.ML >= 3.0.0-preview.23266.6",
       "PacktLibrary >= 1.0.0"
     ]
   },
@@ -1168,11 +1170,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
+      "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj",
       "projectName": "Game",
-      "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
+      "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj",
       "packagesPath": "C:\\Users\\navgh2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\obj\\",
+      "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\navgh2\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1202,6 +1204,12 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "Microsoft.ML": {
+            "target": "Package",
+            "version": "[3.0.0-preview.23266.6, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

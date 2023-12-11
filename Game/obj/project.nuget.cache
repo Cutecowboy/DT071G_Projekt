@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dHIkCADxkY75/dFnURLewL6Qbv3oM/TouSfhNvvRpq6SUq0+qhQoZk7cSfTc9kIm5ZJ+kt5iPVSa/lwaXYSwUQ==",
+  "dgSpecHash": "qfc8hqNVYbg7zuhY19kKY6lbxXbz/viCqSNLNXxIeMs3iOPtUiTDUh9xLa0RHoQEXNAQNJB5ci+HmMl5OtVeZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
+  "projectFilePath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\navgh2\\.nuget\\packages\\microsoft.ml\\3.0.0-preview.23266.6\\microsoft.ml.3.0.0-preview.23266.6.nupkg.sha512",
     "C:\\Users\\navgh2\\.nuget\\packages\\microsoft.ml.cpumath\\3.0.0-preview.23266.6\\microsoft.ml.cpumath.3.0.0-preview.23266.6.nupkg.sha512",

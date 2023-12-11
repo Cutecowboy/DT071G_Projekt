@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Game/1.0.0": {
         "dependencies": {
+          "Microsoft.ML": "3.0.0-preview.23266.6",
           "PacktLibrary": "1.0.0"
         },
         "runtime": {
