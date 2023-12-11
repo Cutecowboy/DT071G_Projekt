@@ -9,3 +9,11 @@ C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\ne
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\refint\PacktLibrary.dll
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\PacktLibrary.pdb
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\ref\PacktLibrary.dll
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\myMLApp.deps.json
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\myMLApp.runtimeconfig.json
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\SentimentModel.mlnet
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\myMLApp.exe
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\myMLApp.dll
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\myMLApp.pdb
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\PacktLibrary.csproj.AssemblyReference.cache
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\PacktLibrary.csproj.CopyComplete

@@ -1,5 +1,5 @@
 using System.Text.Json;
-
+using MyMLApp;
 namespace Packt.Shared
 {
     public class Reviews : Games
@@ -11,11 +11,13 @@ namespace Packt.Shared
 
         public List<Review> review = [];
 
+
+
         public new void Setup()
         {
             // check if file exists
 
-            if (File.Exists("reviews.json"))
+            if (File.Exists("review.json"))
             {
                 // read the JSON file
                 string jsonData = File.ReadAllText("review.json");
@@ -99,9 +101,19 @@ namespace Packt.Shared
                     {
 
                         // code integrated with AI
-                        bool incitement = true;
+                        // add inputted data
+                        var sampleData = new SentimentModel.ModelInput()
+                        {
+                            Col0 = CommentInp
+                        };
+                        // make a prediction based on the submitted review
+                        var result = SentimentModel.Predict(sampleData);
+                        // if AI gives 1, then the prediction of the review is positive return 1 (true) else (0) false 
+                        var sentiment = result.PredictedLabel == 1 ? "Positive" : "Negative";
+                       
+                        bool incitement = sentiment == "Positive" ? true : false;
 
-                        review.Add(new Review(Id: 0, Name: NameInp, Comment: CommentInp, Incitement: true, GameId: gameId));
+                        review.Add(new Review(Id: PostId(), Name: NameInp, Comment: CommentInp, Incitement: incitement, GameId: gameId));
 
                         Save();
                         Clear();
@@ -119,12 +131,77 @@ namespace Packt.Shared
 
                 }
             }
-
-
-
-
         }
 
+        // return an unique id for when an review is made
+        public new int PostId()
+        {
+            if (review.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return review.Max(t => t.Id) + 1;
+            }
+        }
+
+
+        // delete all reviews that is connected to gameid, triggered by DeleteGame 
+        public void DeleteReview(int id, bool adm)
+        {
+            // check if logged in, should in theory be guarded by DeleteGame
+            if (adm)
+            {
+                int count = 0;
+
+                // try to find the count
+                try
+                {
+                    // find the count of the instances where gameid is equals to the id that should be deleted
+
+                    count = review.FindAll(rev => rev.GameId == id).Count;
+                }
+                catch (ArgumentNullException)
+                {
+                    // do nothing
+                    throw;
+                }
+
+                // if count greater than 0
+                if (count > 0)
+                {
+                    // try removing 
+                    try
+                    {
+                        // remove all instances where gameid == the id you want to remove
+                        review.RemoveAll(rev => rev.GameId == id);
+                        // save new review list
+                        Save();
+                        // write success
+                        WriteLine($"{count} reviews where removed on game id: {id}, press any key to continue!");
+                        ReadKey();
+                    }
+                    // catch error
+                    catch (ArgumentNullException)
+                    {
+                        // write error message
+                        WriteLine("Error while trying to remove the reviews, press any key to continue!");
+                        ReadKey();
+                    }
+
+
+                }
+                else // no items where removed
+                {
+                    // write message
+                    WriteLine($"No reviews where removed on game id: {id}, press any key to continue!");
+                    ReadKey();
+                }
+
+            } // no need for else here, DeleteGame will prompt error
+
+        }
 
         // save new reviews to the JSON file
         public new void Save()

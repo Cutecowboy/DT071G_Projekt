@@ -61,6 +61,65 @@
         }
       }
     },
+    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj",
+        "projectName": "myMLApp",
+        "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj",
+        "packagesPath": "C:\\Users\\navgh2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\navgh2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.0-preview.23266.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\navgh2\\Desktop\\test2\\dotnet 8\\sdk\\8.0.100-rc.2.23502.2/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\PacktLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -82,7 +141,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj": {
+                "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -331,8 +331,9 @@ public class Games
                     // clear
                     Clear();
                     // write success message
-                    WriteLine($"Post id: {id} is now removed, press any key to continue!");
-                    ReadKey();
+                    WriteLine($"Post id: {id} is now removed!");
+                    
+                    
                 }
                 // catch exceptionerror in case something goes wrong
                 catch (ArgumentException)

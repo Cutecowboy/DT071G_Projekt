@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PacktLibrary\PacktLibrary.csproj" />
   </ItemGroup>
+   <ItemGroup>
+    <ProjectReference Include="\myMLApp\myMLApp.csproj" />
+  </ItemGroup>
 </Project>
