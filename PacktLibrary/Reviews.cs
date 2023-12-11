@@ -2,7 +2,7 @@ using System.Text.Json;
 using MyMLApp;
 namespace Packt.Shared
 {
-    public class Reviews : Games
+    public class Reviews 
     {
 
         // reviews will store following variables
@@ -13,7 +13,7 @@ namespace Packt.Shared
 
 
 
-        public new void Setup()
+        public void Setup()
         {
             // check if file exists
 
@@ -152,7 +152,7 @@ namespace Packt.Shared
         }
 
         // return an unique id for when an review is made
-        public new int PostId()
+        public int PostId()
         {
             if (review.Count == 0)
             {
@@ -222,7 +222,7 @@ namespace Packt.Shared
         }
 
         // save new reviews to the JSON file
-        public new void Save()
+        public void Save()
         {
             // if no entries, reduce bugs by replacing empty array with empty string
             if (review.Count == 0)

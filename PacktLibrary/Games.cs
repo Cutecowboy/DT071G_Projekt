@@ -1,19 +1,31 @@
-﻿using System.Globalization;
-using System.IO.Enumeration;
+﻿using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-
-using static System.Console;
-
 namespace Packt.Shared;
 
 public class Games
 {
 
     // Game object will store following variables
-    // int id, string name, string developer, int/datetime year, int price
-    public record Game(int Id, string Name, string Developer, int Year, int Price);
+    // int id, string name, string developer, int/datetime year, int price  
+    /*     public record struct Game(int Id, string Name, string Developer, int Year, int Price);
+     */
+    public record Game
+    {
+        public Game(int Id, string Name, string Developer, int Year, int Price)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Developer = Developer;
+            this.Year = Year;
+            this.Price = Price;
+        }
 
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Developer { get; set; }
+        public int Year { get; set; }
+        public int Price { get; set; }
+    }
     // declare empty game object as standard, will be used as read/write variable
     public List<Game> game = [];
 
@@ -58,9 +70,9 @@ public class Games
         {
             // prompt admin to enter username and password
             WriteLine("Enter your username: ");
-            string inpName = ReadLine();
+            string inpName = ReadLine()!;
             WriteLine("Enter your password: ");
-            string inpPass = ReadLine();
+            string inpPass = ReadLine()!;
 
             // check input with the hardcoded username/password
             if (inpName.ToLower() == username && inpPass.ToLower() == password)
@@ -280,8 +292,11 @@ public class Games
                 ReadKey();
 
             }
-
-
+            else // all conditions are not good
+            {
+                WriteLine("Something went wrong, please try again, press any key to continue!");
+                ReadKey();
+            }
         }
         else
         {
@@ -332,8 +347,8 @@ public class Games
                     Clear();
                     // write success message
                     WriteLine($"Post id: {id} is now removed!");
-                    
-                    
+
+
                 }
                 // catch exceptionerror in case something goes wrong
                 catch (ArgumentException)
@@ -405,5 +420,193 @@ public class Games
         return message;
     }
 
+    // edit game by id
+    public void EditGame(int id)
+    {
+        // ensure no brute-forcing, admin has to be logged in
+        if (admin)
+        {
+            // if game with that id exists, should always be one as id is unique
+            if (game.FindAll(g => g.Id == id).Count == 1)
+            {
+                int index = game.FindIndex(g => g.Id == id);
+                // declare dummies for input values
+                bool NameChecker = false;
+                bool DevChecker = false;
+                bool PriceChecker = false;
+                bool YearChecker = false;
 
+                // declare empty values for the input params
+                string inpName = "";
+                string inpDev = "";
+                string inpPrice = "";
+                string inpYear = "";
+
+                // first loop
+                while (NameChecker == false)
+                {
+                    // clear terminal
+                    Clear();
+                    // prompt user to enter game name
+                    WriteLine("Enter the games name: ");
+                    inpName = ReadLine()!;
+                    // check whether input is empty
+                    if (string.IsNullOrEmpty(inpName))
+                    {
+                        // clear
+                        Clear();
+                        // prompt user to re-enter valid name
+                        WriteLine("Please enter a valid name, press any key to continue!");
+                        ReadKey();
+                    }
+                    // check if input is greater than 1 character long
+                    else if (inpName.Length < 2)
+                    {
+                        // clear
+                        Clear();
+                        // prompt user to re-enter valid name
+                        WriteLine("Please enter a name that includes atleast two characters, press any key to continue!");
+                        ReadKey();
+                    }
+                    else // success
+                    {
+                        // set dummy to true, break loop
+                        NameChecker = true;
+                    }
+                }
+
+
+                // second loop
+                while (DevChecker == false)
+                {
+                    // clear
+                    Clear();
+                    // prompt user to add dev name
+                    WriteLine("Enter the developers name: ");
+                    inpDev = ReadLine()!;
+                    // check if empty input
+                    if (string.IsNullOrEmpty(inpDev))
+                    {
+                        Clear();
+                        // prompt user to re-enter valid name
+                        WriteLine("Please enter a valid name, press any key to continue!");
+                        ReadKey();
+                    }
+
+                    // check that characters is greater than 1 character long
+                    else if (inpDev.Length < 2)
+                    {
+                        Clear();
+                        // prompt user to re-enter valid name
+                        WriteLine("Please enter a name that includes atleast two characters, press any key to continue!");
+                        ReadKey();
+                    }
+                    else // success
+                    {
+                        // set dummy to true, break loop
+                        DevChecker = true;
+                    }
+                }
+
+                // third loop 
+                while (YearChecker == false)
+                {
+                    //clear
+                    Clear();
+                    // prompt user to enter a year
+                    WriteLine("Enter the published game date in years (YYYY): ");
+                    inpYear = ReadLine()!;
+                    // try to parse input value to an int
+                    if (Int32.TryParse(inpYear, out int year))
+                    {
+                        // if able to parse, check that the inputted year is between 1970 and the current year (2023)
+                        if (year >= 1970 && year <= DateTime.Now.Year)
+                        {
+                            // set dummy to true, break loop
+                            YearChecker = true;
+                        }
+                        else // wrong date
+                        {
+                            Clear();
+                            // explain to user to enter a year between the condition above
+                            WriteLine($"Please enter a year between 1970 and {DateTime.Now.Year}, press any key to try again!");
+                            ReadKey();
+                        }
+
+                    }
+                    else // failed format
+                    {
+                        Clear();
+                        // promt user to re-enter valid year format
+                        WriteLine("Please enter a valid year, format YYYY, press any key to continue!");
+                        ReadKey();
+                    }
+                }
+
+                // fourth loop
+                while (PriceChecker == false)
+                {
+                    Clear();
+                    // prompt user to enter the games price
+                    WriteLine("Enter the games price: ");
+                    inpPrice = ReadLine()!;
+                    // try to parse the input string to an int
+                    if (Int32.TryParse(inpPrice, out int price))
+                    {
+                        // if parsed, check that price is greater than 0
+                        if (price > 0)
+                        {
+                            // set dummy to true, break loop
+                            PriceChecker = true;
+                        }
+                        else // zero or negative
+                        {
+                            Clear();
+                            // prompt user to re-enter a valid price
+                            WriteLine("Please enter a price greater than 0, press any key to try again!");
+                            ReadKey();
+                        }
+
+                    }
+                    else // invalid input
+                    {
+                        Clear();
+                        // prompt user to re-enter valid input
+                        WriteLine("Please enter a valid price, press any key to continue!");
+                        ReadKey();
+                    }
+                }
+                // double-check whether all loops are correct before storing on JSON file. 
+                if (DevChecker && NameChecker && YearChecker && PriceChecker)
+                {
+                    game[index].Name = inpName;
+                    game[index].Developer = inpDev;
+                    game[index].Year = Int32.Parse(inpYear);
+                    game[index].Price = Int32.Parse(inpPrice);
+                    Save();
+                }
+                else // all conditions are not good
+                {
+                    WriteLine("Something went wrong, please try again, press any key to continue!");
+                    ReadKey();
+                }
+
+
+            }
+            else // if id does not exist
+            {
+                // error message
+                WriteLine("That id does not exist, press any key to continue!");
+                ReadKey();
+            }
+
+        }
+        else // if not logged in
+        {
+            // error message
+            WriteLine("Must be logged in to edit a game, please log in and try again, press any key to continue!");
+            ReadKey();
+        }
+
+    }
 }

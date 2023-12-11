@@ -12,7 +12,7 @@ reviews.Setup();
 WriteLine(games.admin);
 games.admin = true; */
 
-WriteLine(games.PrintGames());
+games.admin = true;
 
-WriteLine(reviews.GetReviewsBySentiment(3, true));
-WriteLine(reviews.GetReviewsById(2));
+games.EditGame(3);
+WriteLine(games.PrintGames());
