@@ -14,4 +14,5 @@ games.admin = true; */
 
 WriteLine(games.PrintGames());
 
-reviews.AddComment(0);
+WriteLine(reviews.GetReviewsBySentiment(3, true));
+WriteLine(reviews.GetReviewsById(2));
