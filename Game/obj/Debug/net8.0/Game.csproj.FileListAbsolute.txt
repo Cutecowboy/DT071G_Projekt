@@ -40,3 +40,4 @@ C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\Game\bin\Debug\net8.0\run
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\Game\bin\Debug\net8.0\runtimes\win-x86\native\LdaNative.dll
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\Game\bin\Debug\net8.0\myMLApp.dll
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\Game\bin\Debug\net8.0\myMLApp.pdb
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\Game\obj\Debug\net8.0\Game.sourcelink.json

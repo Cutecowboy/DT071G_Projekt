@@ -17,3 +17,4 @@ C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\ne
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\bin\Debug\net8.0\myMLApp.pdb
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\PacktLibrary.csproj.AssemblyReference.cache
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\PacktLibrary.csproj.CopyComplete
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\PacktLibrary\obj\Debug\net8.0\PacktLibrary.sourcelink.json

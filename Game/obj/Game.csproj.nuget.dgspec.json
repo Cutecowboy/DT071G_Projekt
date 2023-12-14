@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj": {}
+    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj": {}
   },
   "projects": {
-    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj": {
+    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj",
+        "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
         "projectName": "Game",
-        "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\Game.csproj",
+        "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
         "packagesPath": "C:\\Users\\navgh2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\game\\obj\\",
+        "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\navgh2\\AppData\\Roaming\\NuGet\\NuGet.Config"

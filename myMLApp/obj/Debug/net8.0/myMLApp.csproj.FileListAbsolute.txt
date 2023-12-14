@@ -103,3 +103,4 @@ C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\myMLApp\obj\Debug\net8.0\
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\myMLApp\obj\Debug\net8.0\myMLApp.pdb
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\myMLApp\obj\Debug\net8.0\myMLApp.genruntimeconfig.cache
 C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\myMLApp\obj\Debug\net8.0\ref\myMLApp.dll
+C:\Users\navgh2\Desktop\test2\xampp\htdocs\DT071G\proj\myMLApp\obj\Debug\net8.0\myMLApp.sourcelink.json
