@@ -2,7 +2,7 @@ using System.Text.Json;
 using MyMLApp;
 namespace Packt.Shared
 {
-    public class Reviews 
+    public class Reviews
     {
 
         // reviews will store following variables
@@ -221,6 +221,98 @@ namespace Packt.Shared
 
         }
 
+
+        // count the number of reviews in a gameid, return boolean
+        public bool ReviewCounter(int id, bool adm)
+        {
+            // check if logged in, should in theory be guarded by DeleteGame
+            if (adm)
+            {
+                int count = 0;
+
+                // try to find the count
+                try
+                {
+                    // find the count of the instances where gameid is equals to the id that should be deleted
+
+                    count = review.FindAll(rev => rev.GameId == id).Count;
+                }
+                catch (ArgumentNullException)
+                {
+                    // do nothing
+                    throw;
+                }
+
+                // if count greater than 0
+                if (count > 0)
+                {
+                    return true;
+                }
+                else { return false; }
+            }
+            else { return false; }
+        }
+        // remove review based on review id
+        public void DeleteReviewById(int id, bool adm)
+        {
+            // check if logged in, should in theory be guarded by DeleteGame
+            if (adm)
+            {
+                int count = 0;
+
+                // try to find the count
+                try
+                {
+                    // find the count of the instances where gameid is equals to the id that should be deleted
+
+                    count = review.FindAll(rev => rev.Id == id).Count;
+                }
+                catch (ArgumentNullException)
+                {
+                    // do nothing
+                    throw;
+                }
+
+                // if count greater than 0
+                if (count > 0)
+                {
+                    // try removing 
+                    try
+                    {
+                        // remove all instances where gameid == the id you want to remove
+                        review.RemoveAll(rev => rev.Id == id);
+                        // save new review list
+                        Save();
+                        // write success
+                        WriteLine($"Review {id} was successfully removed, press any key to continue!");
+                        ReadKey();
+                    }
+                    // catch error
+                    catch (ArgumentNullException)
+                    {
+                        // write error message
+                        WriteLine("Error while trying to remove the review, press any key to continue!");
+                        ReadKey();
+                    }
+
+
+                }
+                else // no items where removed
+                {
+                    // write message
+                    WriteLine($"No reviews where found on id: {id}, press any key to continue!");
+                    ReadKey();
+                }
+
+            }
+            else
+            {
+                WriteLine("Unable to delete reviews without logging in as admin, press any key to continue!");
+                ReadKey();
+            }
+
+        }
+
         // save new reviews to the JSON file
         public void Save()
         {
@@ -240,7 +332,7 @@ namespace Packt.Shared
         }
 
         // get the reviews based on sentiment, takes id and which Sentiment (bool), return string
-        public string GetReviewsBySentiment(int id, bool sentiment)
+        public string GetReviewsBySentiment(int id, bool sentiment, bool adm)
         {
 
             // declare empty string
@@ -275,8 +367,10 @@ namespace Packt.Shared
                     message += String.Format("{0, -5} {1, -20} {2, -30}\n", i.Id, i.Name, i.Comment);
 
                 }
-                message += "\nPress any key to go back!";
-
+                if (!adm)
+                {
+                    message += "\nPress any key to go back!";
+                }
             }
             // return message string
             return message;
@@ -284,8 +378,20 @@ namespace Packt.Shared
 
         }
 
+        // get list of valid id's on reviews based on id
+        public List<int> GetReviewListById(int id, bool adm){
+            List<int> list = [];
+            if(review.FindAll(rev => rev.GameId == id).Count > 0){
+                foreach (var i in review.FindAll(rev => rev.GameId == id))
+                {
+                    list.Add(i.Id);
+                }
+            }
+            return list;
+        }
+
         // get all reviews based on id
-        public string GetReviewsById(int id)
+        public string GetReviewsById(int id, bool adm)
         {
             // declare empty string
             string message = "";
@@ -307,8 +413,10 @@ namespace Packt.Shared
                     // display the id, username and review
                     message += String.Format("{0, -5} {1, -20} {2, -30}\n", i.Id, i.Name, i.Comment);
                 }
-                message += "\nPress any key to go back!";
-
+                if (!adm)
+                {
+                    message += "\nPress any key to go back!";
+                }
             }
             // return message string
             return message;
