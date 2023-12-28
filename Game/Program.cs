@@ -394,7 +394,7 @@ static void Program()
                 List<string> validInp = ["1", "2", "X"];
 
                 Clear();
-                WriteLine($"Displaying all games:\n{games.PrintGames()}\n\n1.Check reviews\n2.Delete review\nX. Go back");
+                WriteLine($"Displaying all games:\n{games.PrintGames()}\n\n1. Check reviews\n2. Delete review\nX. Go back");
 
 
 
@@ -491,6 +491,7 @@ static void Program()
                                         // get a list of valid inputs otherwise able to remove a review outside the selected game
                                         List<int> list = reviews.GetReviewListById(id, loggedIn);
                                         // if it has games, print all of them out
+                                        Clear();
                                         WriteLine(reviews.GetReviewsById(id, loggedIn) + "\n\nSelect the review id to remove\nX to go back");
                                         string userInp3 = ReadLine()!;
                                         if (userInp3.ToUpper() == "X")
@@ -507,14 +508,17 @@ static void Program()
                                                 // delete that review
                                                 reviews.DeleteReviewById(id2, loggedIn);
                                                 Clear();
+                                                // ask if admin wants to remove another review
                                                 WriteLine("Want to remove another review? (Y/N)");
                                                 string userInp4 = ReadLine()!;
+                                                // if no send to menu
                                                 if (userInp4.ToUpper() == "N")
                                                 {
                                                     dummy3 = true;
                                                     RevMenu(3, true);
 
                                                 }
+                                                // if anything but yes send to menu
                                                 else if (userInp4.ToUpper() != "Y")
                                                 {
                                                     Clear();
@@ -522,13 +526,16 @@ static void Program()
                                                     dummy3 = true;
                                                     RevMenu(3, true);
                                                 }
-                                            } else{
+                                            }
+                                            else
+                                            {
+                                                // if invalid input due not id not in list
                                                 Clear();
                                                 WriteLine("Invalid review id, press any key to try again!");
                                                 ReadKey();
                                             }
                                         }
-                                        else
+                                        else // if invalid input due to not able to parse to int
                                         {
                                             Clear();
                                             WriteLine("Incorrect input, press any key to try again!");
@@ -536,14 +543,15 @@ static void Program()
                                         }
 
 
-                                    }
+                                    } // if no reviews
                                     else
                                     {
                                         Clear();
-                                        WriteLine($"Game id: {id} does not exist, press any key to try again!");
+                                        WriteLine($"Game id: {id} has no reviews, press any key to try again!");
                                         ReadKey();
                                     }
                                 }
+                                // if game id was not able to parse to int
                                 else
                                 {
                                     Clear();
@@ -553,9 +561,15 @@ static void Program()
                             }
                             break;
                         case "X":
+                            // case X send back to admin main menu
                             menu2(2);
                             break;
                         default:
+                            // if something goes wrong  error msg send back to admin main menu
+                            Clear();
+                            WriteLine("The input was incorrect, press any key to try again!");
+                            ReadKey();
+                            menu2(2);
                             break;
                     }
                 }
@@ -642,8 +656,10 @@ static void Program()
                     else if (userInp2.ToUpper() != "Y")
                     {
                         Clear();
-                        WriteLine("You have entered an incorrect input, you will no go to the edit menu!");
+                        dummy = false;
+                        WriteLine("You have entered an incorrect input, you will no go to the admin menu!");
                         ReadKey();
+                        menu2(2);
                     }
                 }
                 // if input is incorrect 
@@ -695,12 +711,14 @@ static void Program()
                         dummy = false;
                         menu2(2);
                     }
-                    // else send user back to the deletion menu
+                    // else send user back to the admin menu
                     else if (userInp2.ToUpper() != "Y")
                     {
                         Clear();
-                        WriteLine("You have entered an incorrect input, you will no go to the deletion menu!");
+                        dummy = false;
+                        WriteLine("You have entered an incorrect input, you will now go to the admin menu!");
                         ReadKey();
+                        menu2(2);
                     }
                 }
                 // if input is incorrect

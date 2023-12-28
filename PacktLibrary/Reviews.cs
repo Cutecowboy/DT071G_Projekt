@@ -379,9 +379,11 @@ namespace Packt.Shared
         }
 
         // get list of valid id's on reviews based on id
-        public List<int> GetReviewListById(int id, bool adm){
+        public List<int> GetReviewListById(int id, bool adm)
+        {
             List<int> list = [];
-            if(review.FindAll(rev => rev.GameId == id).Count > 0){
+            if (review.FindAll(rev => rev.GameId == id).Count > 0)
+            {
                 foreach (var i in review.FindAll(rev => rev.GameId == id))
                 {
                     list.Add(i.Id);
@@ -406,12 +408,12 @@ namespace Packt.Shared
             {
                 // display the products
                 message = "Displaying all reviews:\n";
-                message += String.Format("{0, -5} {1, -20} {2, -30}\n\n", "ID", "Username", "Review");
+                message += String.Format("{0, -5} {1, -20} {2, -50} {3, -30}\n\n", "ID", "Username", "Review", "Sentiment");
                 // loop each iteration that has gameid == id
                 foreach (var i in review.FindAll(rev => rev.GameId == id))
                 {
                     // display the id, username and review
-                    message += String.Format("{0, -5} {1, -20} {2, -30}\n", i.Id, i.Name, i.Comment);
+                    message += String.Format("{0, -5} {1, -20} {2, -50} {3, -30}\n", i.Id, i.Name, i.Comment, i.Sentiment == true ? "Positive" : "Negative");
                 }
                 if (!adm)
                 {

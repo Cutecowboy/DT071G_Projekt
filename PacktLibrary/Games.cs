@@ -334,13 +334,14 @@ public class Games
         if (admin)
         {
             // if the inputted id is >= 0 and the id <= game count 
-            if (id >= 0 && id <= game.Count)
+            if (game.FindAll(g => g.Id == id).Count == 1)
             {
+                int index = game.FindIndex(g => g.Id == id);
                 // try to 
                 try
                 {
                     // remove the game at said index
-                    game.RemoveAt(id);
+                    game.RemoveAt(index);
                     // save
                     Save();
                     // clear
@@ -414,7 +415,7 @@ public class Games
             for (int i = 0; i < game.Count; i++)
             {
                 // add information to the string
-                message += String.Format("{0,-5} {1,-30} {2,-30} {3, -10} {4, -10}\n", i, game[i].Name, game[i].Developer, game[i].Year, game[i].Price);
+                message += String.Format("{0,-5} {1,-30} {2,-30} {3, -10} {4, -10}\n", game[i].Id, game[i].Name, game[i].Developer, game[i].Year, game[i].Price);
             }
         }
         return message;
