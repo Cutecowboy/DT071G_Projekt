@@ -513,7 +513,8 @@ static void Program()
                                         string userInp3 = ReadLine()!;
                                         if (userInp3.ToUpper() == "X")
                                         {
-                                            dummy3 = true;
+                                            dummy3 = false;
+                                            dummy = false;
                                             RevMenu(3, loggedIn);
                                         }
                                         // if input can be parsed to int
@@ -531,7 +532,8 @@ static void Program()
                                                 // if no send to menu
                                                 if (userInp4.ToUpper() == "N")
                                                 {
-                                                    dummy3 = true;
+                                                    dummy3 = false;
+                                                    dummy = false;
                                                     RevMenu(3, true);
 
                                                 }
@@ -540,7 +542,9 @@ static void Program()
                                                 {
                                                     Clear();
                                                     WriteLine("Incorrect input, press any key to go back to admin menu!");
-                                                    dummy3 = true;
+                                                    dummy3 = false;
+                                                    dummy = false;
+
                                                     RevMenu(3, true);
                                                 }
                                             }
@@ -570,6 +574,8 @@ static void Program()
                                 }
                                 else if (userInp2.ToUpper() == "X")
                                 {
+                                    dummy3 = false;
+                                    dummy = false;
                                     RevMenu(3, loggedIn);
                                 }
 
@@ -595,7 +601,7 @@ static void Program()
                             break;
                     }
                 }
-
+                break;
             }
 
         }
