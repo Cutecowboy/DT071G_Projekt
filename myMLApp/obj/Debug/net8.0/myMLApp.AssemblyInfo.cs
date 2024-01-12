@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("myMLApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc4089c8f3077f0b2a0afae2f1225b03ca4cbf59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eee1a347687c3a517ac3d512ed5af22e00f6339d")]
 [assembly: System.Reflection.AssemblyProductAttribute("myMLApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("myMLApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
