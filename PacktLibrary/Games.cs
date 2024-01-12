@@ -141,6 +141,7 @@ public class Games
             string inpPrice = "";
             string inpYear = "";
 
+            bool ExitMenu = false;
 
             // first loop
             while (NameChecker == false)
@@ -148,7 +149,7 @@ public class Games
                 // clear terminal
                 Clear();
                 // prompt user to enter game name
-                WriteLine("Enter the games name: ");
+                WriteLine("Enter the games name (X to exit): ");
                 inpName = ReadLine()!;
                 // check whether input is empty
                 if (string.IsNullOrEmpty(inpName))
@@ -158,6 +159,11 @@ public class Games
                     // prompt user to re-enter valid name
                     WriteLine("Please enter a valid name, press any key to continue!");
                     ReadKey();
+                }
+                else if (inpName.ToUpper() == "X")
+                {
+                    ExitMenu = true;
+                    break;
                 }
                 // check if input is greater than 1 character long
                 else if (inpName.Length < 2)
@@ -179,10 +185,11 @@ public class Games
             // second loop
             while (DevChecker == false)
             {
+                if (ExitMenu) { break; }
                 // clear
                 Clear();
                 // prompt user to add dev name
-                WriteLine("Enter the developers name: ");
+                WriteLine("Enter the developers name (X to exit): ");
                 inpDev = ReadLine()!;
                 // check if empty input
                 if (string.IsNullOrEmpty(inpDev))
@@ -191,6 +198,11 @@ public class Games
                     // prompt user to re-enter valid name
                     WriteLine("Please enter a valid name, press any key to continue!");
                     ReadKey();
+                }
+                else if (inpDev.ToUpper() == "X")
+                {
+                    ExitMenu = true;
+                    break;
                 }
 
                 // check that characters is greater than 1 character long
@@ -211,10 +223,11 @@ public class Games
             // third loop 
             while (YearChecker == false)
             {
+                if (ExitMenu) { break; }
                 //clear
                 Clear();
                 // prompt user to enter a year
-                WriteLine("Enter the published game date in years (YYYY): ");
+                WriteLine("Enter the published game date in years (YYYY) (X to exit): ");
                 inpYear = ReadLine()!;
                 // try to parse input value to an int
                 if (Int32.TryParse(inpYear, out int year))
@@ -234,6 +247,11 @@ public class Games
                     }
 
                 }
+                else if (inpYear.ToUpper() == "X")
+                {
+                    ExitMenu = true;
+                    break;
+                }
                 else // failed format
                 {
                     Clear();
@@ -246,9 +264,10 @@ public class Games
             // fourth loop
             while (PriceChecker == false)
             {
+                if (ExitMenu) { break; }
                 Clear();
                 // prompt user to enter the games price
-                WriteLine("Enter the games price: ");
+                WriteLine("Enter the games price (X to exit): ");
                 inpPrice = ReadLine()!;
                 // try to parse the input string to an int
                 if (Int32.TryParse(inpPrice, out int price))
@@ -267,6 +286,11 @@ public class Games
                         ReadKey();
                     }
 
+                }
+                else if (inpPrice.ToUpper() == "X")
+                {
+                    ExitMenu = true;
+                    break;
                 }
                 else // invalid input
                 {
@@ -292,11 +316,17 @@ public class Games
                 ReadKey();
 
             }
+            else if (ExitMenu)
+            {
+                WriteLine("You have chosen not to add the game, press any key to continue!");
+                ReadKey();
+            }
             else // all conditions are not good
             {
                 WriteLine("Something went wrong, please try again, press any key to continue!");
                 ReadKey();
             }
+
         }
         else
         {
@@ -443,13 +473,14 @@ public class Games
                 string inpPrice = "";
                 string inpYear = "";
 
+                bool ExitMenu = false;
                 // first loop
                 while (NameChecker == false)
                 {
                     // clear terminal
                     Clear();
                     // prompt user to enter game name
-                    WriteLine("Enter the games name: ");
+                    WriteLine("Enter the games name (X to exit): ");
                     inpName = ReadLine()!;
                     // check whether input is empty
                     if (string.IsNullOrEmpty(inpName))
@@ -459,6 +490,10 @@ public class Games
                         // prompt user to re-enter valid name
                         WriteLine("Please enter a valid name, press any key to continue!");
                         ReadKey();
+                    }
+                    else if(inpName.ToUpper() == "X"){
+                        ExitMenu = true;
+                        break;
                     }
                     // check if input is greater than 1 character long
                     else if (inpName.Length < 2)
@@ -480,10 +515,11 @@ public class Games
                 // second loop
                 while (DevChecker == false)
                 {
+                    if(ExitMenu) { break; }
                     // clear
                     Clear();
                     // prompt user to add dev name
-                    WriteLine("Enter the developers name: ");
+                    WriteLine("Enter the developers name (X to exit): ");
                     inpDev = ReadLine()!;
                     // check if empty input
                     if (string.IsNullOrEmpty(inpDev))
@@ -492,6 +528,10 @@ public class Games
                         // prompt user to re-enter valid name
                         WriteLine("Please enter a valid name, press any key to continue!");
                         ReadKey();
+                    }
+                    else if(inpDev.ToUpper() == "X"){
+                        ExitMenu = true;
+                        break;
                     }
 
                     // check that characters is greater than 1 character long
@@ -512,10 +552,11 @@ public class Games
                 // third loop 
                 while (YearChecker == false)
                 {
+                    if(ExitMenu) { break; }
                     //clear
                     Clear();
                     // prompt user to enter a year
-                    WriteLine("Enter the published game date in years (YYYY): ");
+                    WriteLine("Enter the published game date in years (YYYY) (X to exit): ");
                     inpYear = ReadLine()!;
                     // try to parse input value to an int
                     if (Int32.TryParse(inpYear, out int year))
@@ -535,6 +576,10 @@ public class Games
                         }
 
                     }
+                    else if(inpYear.ToUpper() == "X"){
+                        ExitMenu = true;
+                        break;
+                    }
                     else // failed format
                     {
                         Clear();
@@ -547,9 +592,10 @@ public class Games
                 // fourth loop
                 while (PriceChecker == false)
                 {
+                    if(ExitMenu) { break; }
                     Clear();
                     // prompt user to enter the games price
-                    WriteLine("Enter the games price: ");
+                    WriteLine("Enter the games price (X to exit): ");
                     inpPrice = ReadLine()!;
                     // try to parse the input string to an int
                     if (Int32.TryParse(inpPrice, out int price))
@@ -569,6 +615,10 @@ public class Games
                         }
 
                     }
+                    else if(inpPrice.ToUpper() == "X"){
+                        ExitMenu = true;
+                        break;
+                    }
                     else // invalid input
                     {
                         Clear();
@@ -585,6 +635,10 @@ public class Games
                     game[index].Year = Int32.Parse(inpYear);
                     game[index].Price = Int32.Parse(inpPrice);
                     Save();
+                }
+                else if (ExitMenu){
+                    WriteLine("You have chosen not to edit the game, press any key to continue!");
+                    ReadKey();
                 }
                 else // all conditions are not good
                 {

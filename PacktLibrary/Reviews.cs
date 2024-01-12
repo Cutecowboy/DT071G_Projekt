@@ -47,12 +47,13 @@ namespace Packt.Shared
             string NameInp = "";
             string CommentInp = "";
 
+            bool ExitMenu = false;
             // while checker false
             while (NameChecker == false)
             {
                 // clear and prompt user
                 Clear();
-                WriteLine("Enter your username: ");
+                WriteLine("Enter your username (X to exit): ");
                 NameInp = ReadLine()!;
 
                 // if if input is empty
@@ -63,6 +64,11 @@ namespace Packt.Shared
                     WriteLine("Please enter a valid username, press any key to continue!");
                     ReadKey();
 
+                }
+                else if (NameInp.ToUpper() == "X")
+                {
+                    ExitMenu = true;
+                    break;
                 }
                 // check if input has less than 3 characters
                 else if (NameInp.Length < 3)
@@ -78,77 +84,88 @@ namespace Packt.Shared
                     // dummy variable true to break loop
                     NameChecker = true;
                 }
+            }
 
 
-                // while checker false
-                while (CommentChecker == false)
+            // while checker false
+            while (CommentChecker == false)
+            {
+                if (ExitMenu) { break; }
+                // clear and prompt user
+                Clear();
+                WriteLine("Please write your review (X to exit): ");
+                CommentInp = ReadLine()!;
+
+                // check if input is empty
+                if (string.IsNullOrEmpty(CommentInp))
                 {
-                    // clear and prompt user
+                    // clear and error message
                     Clear();
-                    WriteLine("Please write your review: ");
-                    CommentInp = ReadLine()!;
-
-                    // check if input is empty
-                    if (string.IsNullOrEmpty(CommentInp))
-                    {
-                        // clear and error message
-                        Clear();
-                        WriteLine("Please enter a valid review, press any key to continue!");
-                        ReadKey();
-                    }
-                    // check input has less than 3 characters
-                    else if (CommentInp.Length < 3)
-                    {
-                        // clear and error message
-                        Clear();
-                        WriteLine("Please write a comment that is atleast three characters long, press any key to continue!");
-                        ReadKey();
-                    }
-                    else // all conditions ok
-                    {
-                        // dummy to true, break loop
-                        CommentChecker = true;
-                    }
-
-                    // double check that comments and name conditions are ok
-                    if (CommentChecker && NameChecker)
-                    {
-
-                        // code integrated with AI
-                        // add inputted data
-                        var sampleData = new SentimentModel.ModelInput()
-                        {
-                            Col0 = CommentInp
-                        };
-                        // make a prediction based on the submitted review
-                        var result = SentimentModel.Predict(sampleData);
-                        // if AI gives 1, then the prediction of the review is positive return true else false 
-                        var sentiment = result.PredictedLabel == 1 ? true : false;
-
-                        // create the new review
-                        review.Add(new Review(Id: PostId(), Name: NameInp, Comment: CommentInp, Sentiment: sentiment, GameId: gameId));
-
-                        // save
-                        Save();
-                        // clear
-                        Clear();
-                        // if the review was positive
-                        if (sentiment)
-                        {
-                            // positive review message
-                            WriteLine("Your positive review has been created, press any key to continue!");
-                            ReadKey();
-                        }
-                        else // negative
-                        {
-                            // negative review message
-                            WriteLine("Your negative review has been created, press any key to continue!");
-                            ReadKey();
-                        }
-                    }
-
+                    WriteLine("Please enter a valid review, press any key to continue!");
+                    ReadKey();
+                }
+                else if (CommentInp.ToUpper() == "X")
+                {
+                    ExitMenu = true;
+                    break;
+                }
+                // check input has less than 3 characters
+                else if (CommentInp.Length < 3)
+                {
+                    // clear and error message
+                    Clear();
+                    WriteLine("Please write a comment that is atleast three characters long, press any key to continue!");
+                    ReadKey();
+                }
+                else // all conditions ok
+                {
+                    // dummy to true, break loop
+                    CommentChecker = true;
                 }
             }
+
+            // double check that comments and name conditions are ok
+            if (CommentChecker && NameChecker)
+            {
+
+                // code integrated with AI
+                // add inputted data
+                var sampleData = new SentimentModel.ModelInput()
+                {
+                    Col0 = CommentInp
+                };
+                // make a prediction based on the submitted review
+                var result = SentimentModel.Predict(sampleData);
+                // if AI gives 1, then the prediction of the review is positive return true else false 
+                var sentiment = result.PredictedLabel == 1 ? true : false;
+
+                // create the new review
+                review.Add(new Review(Id: PostId(), Name: NameInp, Comment: CommentInp, Sentiment: sentiment, GameId: gameId));
+
+                // save
+                Save();
+                // clear
+                Clear();
+                // if the review was positive
+                if (sentiment)
+                {
+                    // positive review message
+                    WriteLine("Your positive review has been created, press any key to continue!");
+                    ReadKey();
+                }
+                else // negative
+                {
+                    // negative review message
+                    WriteLine("Your negative review has been created, press any key to continue!");
+                    ReadKey();
+                }
+            }
+            else if (ExitMenu)
+            {
+                WriteLine("You have chosen not to create your review, press any key to continue!");
+                ReadKey();
+            }
+
         }
 
         // return an unique id for when an review is made
@@ -379,7 +396,7 @@ namespace Packt.Shared
         }
 
         // get list of valid id's on reviews based on id
-        public List<int> GetReviewListById(int id, bool adm)
+        public List<int> GetReviewListById(int id)
         {
             List<int> list = [];
             if (review.FindAll(rev => rev.GameId == id).Count > 0)
@@ -392,7 +409,7 @@ namespace Packt.Shared
             return list;
         }
 
-        // get all reviews based on id
+        // get all reviews based on gameid
         public string GetReviewsById(int id, bool adm)
         {
             // declare empty string

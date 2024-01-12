@@ -480,7 +480,7 @@ static void Program()
                                 // select game id 
                                 Clear();
                                 WriteLine($"Displaying all games:\n{games.PrintGames()}");
-                                WriteLine("Please enter what game id you want to delete the review on!");
+                                WriteLine("Please enter what game id you want to delete the review on (X to exit)");
                                 string userInp2 = ReadLine()!;
                                 // try to parse the input to int
                                 if (Int32.TryParse(userInp2, out int id))
@@ -489,7 +489,7 @@ static void Program()
                                     if (reviews.ReviewCounter(id, loggedIn))
                                     {
                                         // get a list of valid inputs otherwise able to remove a review outside the selected game
-                                        List<int> list = reviews.GetReviewListById(id, loggedIn);
+                                        List<int> list = reviews.GetReviewListById(id);
                                         // if it has games, print all of them out
                                         Clear();
                                         WriteLine(reviews.GetReviewsById(id, loggedIn) + "\n\nSelect the review id to remove\nX to go back");
@@ -497,7 +497,7 @@ static void Program()
                                         if (userInp3.ToUpper() == "X")
                                         {
                                             dummy3 = true;
-                                            menu2(2);
+                                            RevMenu(3, loggedIn);
                                         }
                                         // if input can be parsed to int
                                         else if (Int32.TryParse(userInp3, out int id2))
@@ -551,6 +551,10 @@ static void Program()
                                         ReadKey();
                                     }
                                 }
+                                else if (userInp2.ToUpper() == "X") {
+                                    RevMenu(3, loggedIn);
+                                }
+
                                 // if game id was not able to parse to int
                                 else
                                 {
