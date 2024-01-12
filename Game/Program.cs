@@ -125,7 +125,7 @@ static void Program()
             if (section == 1)
             {
                 // declare valid selections and prompt user what choices it can make
-                validInp = ["1", "2", "X"];
+                validInp = ["1", "2", "X", "A"];
                 WriteLine($"Games on shop: \n{games.PrintGames()}");
 
                 WriteLine("What do you want to do?\n1. Watch reviews\n2. Make a review\nX. Exit shop");
@@ -210,6 +210,23 @@ static void Program()
                         Clear();
                         WriteLine("Thank you for visiting the shop, please come again!");
                         break;
+
+                    // case A, hidden on usermenu but option for admins
+                    case "A":
+                        Clear();
+                        // prompt user to login
+                        bool login = games.LoginAdmin();
+                        // check if login was successful
+                        if (!login)
+                        {
+                            // error message
+                            Clear();
+                            WriteLine("You have entered your username/password incorrectly too many times, shop will now close!");
+                        }
+                        // if logged in, go to menu for admins
+                        else { menu2(2); }
+                        break;
+
                     // if anything else give error (should be impossible on theoretical level)
                     default:
                         Clear();
@@ -551,7 +568,8 @@ static void Program()
                                         ReadKey();
                                     }
                                 }
-                                else if (userInp2.ToUpper() == "X") {
+                                else if (userInp2.ToUpper() == "X")
+                                {
                                     RevMenu(3, loggedIn);
                                 }
 
