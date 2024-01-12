@@ -2,6 +2,9 @@ using System.Text.Json;
 using MyMLApp;
 namespace Packt.Shared
 {
+    /// <summary>
+    /// Review is an object which enable users to add new reviews and admins to remove them
+    /// </summary>
     public class Reviews
     {
 
@@ -9,10 +12,15 @@ namespace Packt.Shared
         // id for the review, name of the reviewer, the review, and what game id the review is on
         public record Review(int Id, string Name, string Comment, bool Sentiment, int GameId);
 
+        /// <summary>
+        /// List of all reviews, read/write on json
+        /// </summary>
         public List<Review> review = [];
 
 
-
+        /// <summary>
+        /// setup so the application can run, check JSON file, if not exist create one
+        /// </summary>
         public void Setup()
         {
             // check if file exists
@@ -34,7 +42,10 @@ namespace Packt.Shared
                 File.WriteAllText("review.json", "");
             }
         }
-
+        /// <summary>
+        /// Function that adds a review on the list
+        /// </summary>
+        /// <param name="gameId">Enter Gameid of which u want to create a review on</param>
         public void AddComment(int gameId)
         {
 
@@ -168,7 +179,10 @@ namespace Packt.Shared
 
         }
 
-        // return an unique id for when an review is made
+        /// <summary>
+        /// Return an unique review id 
+        /// </summary>
+        /// <returns>Returns an unique review id</returns>
         public int PostId()
         {
             if (review.Count == 0)
@@ -182,7 +196,11 @@ namespace Packt.Shared
         }
 
 
-        // delete all reviews that is connected to gameid, triggered by DeleteGame 
+        /// <summary>
+        /// Function that removes all reviews that is connected to a gameid, is chained with Game.DeleteGame(id)
+        /// </summary>
+        /// <param name="id">The game id </param>
+        /// <param name="adm">Check if admin</param>
         public void DeleteReview(int id, bool adm)
         {
             // check if logged in, should in theory be guarded by DeleteGame
@@ -239,7 +257,12 @@ namespace Packt.Shared
         }
 
 
-        // count the number of reviews in a gameid, return boolean
+        /// <summary>
+        /// Function that counts the number of reviews there exists in a game
+        /// </summary>
+        /// <param name="id">Game id</param>
+        /// <param name="adm">Check admin</param>
+        /// <returns>A boolean whether there exists any reviews on that game</returns>
         public bool ReviewCounter(int id, bool adm)
         {
             // check if logged in, should in theory be guarded by DeleteGame
@@ -269,7 +292,12 @@ namespace Packt.Shared
             }
             else { return false; }
         }
-        // remove review based on review id
+
+        /// <summary>
+        /// Remove a review based on review id
+        /// </summary>
+        /// <param name="id">The id of the review</param>
+        /// <param name="adm">Check admin</param>
         public void DeleteReviewById(int id, bool adm)
         {
             // check if logged in, should in theory be guarded by DeleteGame
@@ -330,7 +358,9 @@ namespace Packt.Shared
 
         }
 
-        // save new reviews to the JSON file
+        /// <summary>
+        /// Save the review.json file
+        /// </summary>
         public void Save()
         {
             // if no entries, reduce bugs by replacing empty array with empty string
@@ -348,7 +378,13 @@ namespace Packt.Shared
             }
         }
 
-        // get the reviews based on sentiment, takes id and which Sentiment (bool), return string
+        /// <summary>
+        /// Get reviews based on sentiment, takes gameid and which sentiment you want
+        /// </summary>
+        /// <param name="id">game id</param>
+        /// <param name="sentiment">True = positive, false = negative</param>
+        /// <param name="adm">Admin checker</param>
+        /// <returns></returns>
         public string GetReviewsBySentiment(int id, bool sentiment, bool adm)
         {
 
@@ -395,7 +431,11 @@ namespace Packt.Shared
 
         }
 
-        // get list of valid id's on reviews based on id
+        /// <summary>
+        /// Get a list of valid review id's based on gameid
+        /// </summary>
+        /// <param name="id">gameid</param>
+        /// <returns></returns>
         public List<int> GetReviewListById(int id)
         {
             List<int> list = [];
@@ -409,7 +449,12 @@ namespace Packt.Shared
             return list;
         }
 
-        // get all reviews based on gameid
+        /// <summary>
+        /// get all reviews based on gameid
+        /// </summary>
+        /// <param name="id">game id</param>
+        /// <param name="adm">admin checker</param>
+        /// <returns></returns>
         public string GetReviewsById(int id, bool adm)
         {
             // declare empty string

@@ -601,7 +601,14 @@ static void Program()
                             break;
                     }
                 }
-                
+                // error msg
+                else
+                {
+                    Clear();
+                    WriteLine("The input was incorrect, press any key to try again!");
+                    ReadKey();
+                }
+
             }
 
         }

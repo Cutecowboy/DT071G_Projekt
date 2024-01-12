@@ -2,13 +2,14 @@
 using System.Text.Json;
 namespace Packt.Shared;
 
+/// <summary>
+/// Games is an object which enable admins to add, edit and delete games, user are allowed to check the games 
+/// </summary>
 public class Games
 {
-
-    // Game object will store following variables
-    // int id, string name, string developer, int/datetime year, int price  
-    /*     public record struct Game(int Id, string Name, string Developer, int Year, int Price);
-     */
+    /// <summary>
+    /// Game Game object will store following variables int id, string name, string developer, int/datetime year, int price  
+    /// </summary>
     public record Game
     {
         public Game(int Id, string Name, string Developer, int Year, int Price)
@@ -26,14 +27,20 @@ public class Games
         public int Year { get; set; }
         public int Price { get; set; }
     }
-    // declare empty game object as standard, will be used as read/write variable
+
+    /// <summary>
+    /// Game list which will be used as read/write 
+    /// </summary>
     public List<Game> game = [];
 
-    // admin variable which can be toggled
+    /// <summary>
+    /// admin variable which handles security
+    /// </summary>
     public bool admin = false;
 
-    // setup the initiation of the game JSON file. 
-
+    /// <summary>
+    /// setup so the application can run without errors, check for JSON file, if no JSON file create one
+    /// </summary>
     public void Setup()
     {
         // check if file exists
@@ -56,7 +63,10 @@ public class Games
         }
     }
 
-    // Functionality to login as an admin
+    /// <summary>
+    /// functionality to login as an admin
+    /// </summary>
+    /// <returns>A boolean which is indicates user is admin</returns>
     public bool LoginAdmin()
     {
         // hardcode username and password
@@ -105,7 +115,10 @@ public class Games
 
     }
 
-    // simple function that logs out the admin
+    /// <summary>
+    /// function that logs out the admin
+    /// </summary>
+    /// <returns>A boolean which indicates that user is not an admin</returns>
     public bool LogoutAdmin()
     {
         // check if admin is logged in
@@ -123,7 +136,9 @@ public class Games
         }
 
     }
-
+    /// <summary>
+    /// Function that adds a new game to the game list
+    /// </summary>
     public void AddGame()
     {
         // Ensure no brute-forcing, admin has to be logged in
@@ -357,7 +372,10 @@ public class Games
 
     }
 
-    // delete a game with id as param
+    /// <summary>
+    /// Function that deletes a game from the gamelist
+    /// </summary>
+    /// <param name="id">Id to the game</param>
     public void DeleteGame(int id)
     {
         // check that you're logged in as admin
@@ -413,7 +431,10 @@ public class Games
 
     }
 
-    // check index and return a index
+    /// <summary>
+    /// Check gamelist id's and return an unique game id 
+    /// </summary>
+    /// <returns>returns an game id which is unique</returns>
     public int PostId()
     {
         // if there are not games 
@@ -429,6 +450,10 @@ public class Games
         }
     }
 
+    /// <summary>
+    /// Fetch all games in the JSON file and return it as a string
+    /// </summary>
+    /// <returns>Returns a table of all games in the JSON file</returns>
     public string PrintGames()
     {
         // declare empty string
@@ -451,7 +476,10 @@ public class Games
         return message;
     }
 
-    // edit game by id
+    /// <summary>
+    /// Edits a game based on the id given
+    /// </summary>
+    /// <param name="id">The games id which you want to edit</param>
     public void EditGame(int id)
     {
         // ensure no brute-forcing, admin has to be logged in
