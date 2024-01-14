@@ -17,3 +17,11 @@ Recensionerna är utvärderade med hjälp av AI om den är positiv eller negativ
 
 ### Administratörer
 Som administratör har du tillgång till allt! Utöver att du har samma tillgång som vanliga användare kan du lägga till, rediger eller ta bort spel från applikationen. Du kan även ta bort recensioner. 
+
+## Köra programmet
+
+För att kunna köra programmet krävs följande mjukvara.
+- C#.NET 
+- Kommandotolken, powershell eller en annan terminal som stödjer C#.NET
+
+För att få igång programmet behöver man öppna upp en kompatibel terminal i "Game" mappen. Därefter skriver man "dotnet run" i terminal och då går programmet igång.

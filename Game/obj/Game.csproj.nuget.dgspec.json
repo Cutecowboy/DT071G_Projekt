@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj": {}
+    "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\Game\\Game.csproj": {}
   },
   "projects": {
-    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj": {
+    "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\Game\\Game.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
+        "projectUniqueName": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\Game\\Game.csproj",
         "projectName": "Game",
-        "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\Game.csproj",
-        "packagesPath": "C:\\Users\\navgh2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\Game\\obj\\",
+        "projectPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\Game\\Game.csproj",
+        "packagesPath": "C:\\Users\\navid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\Game\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\navgh2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\navid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\PacktLibrary.csproj": {
-                "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\PacktLibrary.csproj"
+              "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\PacktLibrary\\PacktLibrary.csproj": {
+                "projectPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\PacktLibrary\\PacktLibrary.csproj"
               }
             }
           }
@@ -63,26 +65,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\navgh2\\Desktop\\test2\\dotnet 8\\sdk\\8.0.100-rc.2.23502.2/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj": {
+    "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\myMLApp\\myMLApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj",
+        "projectUniqueName": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\myMLApp\\myMLApp.csproj",
         "projectName": "myMLApp",
-        "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj",
-        "packagesPath": "C:\\Users\\navgh2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\obj\\",
+        "projectPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\myMLApp\\myMLApp.csproj",
+        "packagesPath": "C:\\Users\\navid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\myMLApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\navgh2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\navid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -122,34 +126,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\navgh2\\Desktop\\test2\\dotnet 8\\sdk\\8.0.100-rc.2.23502.2/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\PacktLibrary.csproj": {
+    "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\PacktLibrary\\PacktLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\PacktLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\PacktLibrary\\PacktLibrary.csproj",
         "projectName": "PacktLibrary",
-        "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\PacktLibrary.csproj",
-        "packagesPath": "C:\\Users\\navgh2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\PacktLibrary\\obj\\",
+        "projectPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\PacktLibrary\\PacktLibrary.csproj",
+        "packagesPath": "C:\\Users\\navid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\PacktLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\navgh2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\navid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj": {
-                "projectPath": "C:\\Users\\navgh2\\Desktop\\test2\\xampp\\htdocs\\DT071G\\proj\\myMLApp\\myMLApp.csproj"
+              "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\myMLApp\\myMLApp.csproj": {
+                "projectPath": "C:\\Users\\navid\\Documents\\miun\\DT071G\\proj\\DT071G_Projekt\\myMLApp\\myMLApp.csproj"
               }
             }
           }
@@ -179,7 +185,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\navgh2\\Desktop\\test2\\dotnet 8\\sdk\\8.0.100-rc.2.23502.2/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
